@@ -40,8 +40,5 @@ public class Cliente {
 	@Column(name = "senha")
 	private String  senha;
 	
-	@ElementCollection
-	@CollectionTable(name = "Telefone")
-	private Set<String> telefones = new HashSet<>();
 	
 }
