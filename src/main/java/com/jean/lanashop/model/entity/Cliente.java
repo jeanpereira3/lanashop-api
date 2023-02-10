@@ -1,6 +1,12 @@
 package com.jean.lanashop.model.entity;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,8 +22,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "usuario", schema = "lanashop")
-public class Usuario {
+@Table(name = "cliente", schema = "lanashop")
+public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +33,15 @@ public class Usuario {
 	private String nome;
 	@Column(name = "email")
 	private String email;
+	@Column(name = "cpf_ou_cnpj")
+	private String cpfOuCnpj;
+	@Column(name = "tipo")
+	private String tipo;
 	@Column(name = "senha")
 	private String  senha;
+	
+	@ElementCollection
+	@CollectionTable(name = "Telefone")
+	private Set<String> telefones = new HashSet<>();
 	
 }
